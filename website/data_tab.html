@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <script src="https://d3js.org/d3.v7.min.js"></script>
+        <!--Links and imports-->
+        <link
+            rel="stylesheet"
+            href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+            integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+            crossorigin="anonymous"
+        />
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Fira+Sans+Condensed&family=Poppins:wght@300&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="static/style.css" />
+        
+        <title>UFO Data</title>
+
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+        crossorigin="" />
+
+        <!-- Leaflet JS -->
+        <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+        crossorigin=""></script>
+
+        <!-- Marker cluster JavaScript code -->
+        <script type="text/javascript" src="https://unpkg.com/leaflet.markercluster@1.0.3/dist/leaflet.markercluster.js"></script>
+
+        <!-- Marker cluster CSS -->
+        <link rel="stylesheet" type="text/css" href="https://unpkg.com/leaflet.markercluster@1.0.3/dist/MarkerCluster.css">
+        <link rel="stylesheet" type="text/css" href="https://unpkg.com/leaflet.markercluster@1.0.3/dist/MarkerCluster.Default.css">
+
+    </head>
+
+    <!--Change the class IDs!-->
+
+    <body>
+        <div class="logo1">
+            <img src="Images/UFO1.jpg" alt="UFO logo" id="logo1">
+        </div>
+        <div class="logo2">
+            <img src="Images/UFO1.jpg" alt="UFO logo" id="logo2">
+        </div>
+        <div class="container">
+          <div class="jumbotron" style="text-align:center">
+            <h2>UFO Sightings in the U.S.</h2>
+            <h4>By Andrew Prozorovsky, Manali Patel, Kush Garg, Sarah John</h4>
+            <h4>We looked at over 65,000 reported UFO sightings between the years of 1910-2014.<span class="star-wars"></span></h4>
+
+            <div class="nav">
+              <div class="col">
+                <a type="button" href="index.html" class="btn btn-default btn-lg upvote" value=1>
+                  <span class=""></span> Map
+                </a>
+                <a type="button" href="analysis.html" class="btn btn-default btn-lg downvote" value=-1>
+                  <span class=""></span> Analysis
+                </a>
+                <a type="button" href="data_tab.html" class="btn btn-default btn-lg upvote" value=1>
+                  <span class=""></span> Data
+                </a>
+                <a type="button" href="api_home.html" class="btn btn-default btn-lg downvote" value=-1>
+                  <span class=""></span> API
+                </a>
+                <a type="button" href="area51.html" class="btn btn-default btn-lg downvote" value=-1>
+                  <span class=""></span> Area 51
+                </a>
+                <a type="button" href="contact.html" class="btn btn-default btn-lg downvote" value=-1>
+                  <span class=""></span> Contact
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <br/>
+        <div class="content-box">
+            <div class="generated-sighting">
+                <p id="sighting-comments"></p>
+                <!---<p id="sighting-details"></p>--->
+            </div>
+            <button id="descriptionButton" type="button">Generate new story</button>
+            <h2 style="text-align: center; margin-top: 10px"><strong>Our Data</strong></h2>
+            <p class="centered-text">The original data came as a .csv file from Kaggle that contained over 70,000 UFO sightings between 1910 and 2014. 
+              It contained the following columns: <i>datetime, city, state, country, shape, duration (seconds), duration (hours/min), 
+                comments, date posted, latitude, and longitude.</i> We appended an <i>ID</i> column and lightly cleaned the data. The dataset had 
+                obvious limitations, but it was relatively easy to manipulate.
+            </p>
+            <br/>
+            <ul class="centered-text">
+              <li style="font-size: 16px"><strong>Some interesting conclusions from the dataset included:</strong></li>
+              <ol>
+                  <li id="list">The American west was a hotbed of UFO sightings, with California having the most sightings by state 
+                    but top cities including Seattle, Phoenix, Portland, and Las Vegas.</li>
+                  <li id="list">Outside of the predictable descriptor “light,” the most common descriptor for what was seen was “triangle.”</li>  
+                  <li id="list">Roswell, New Mexico <i>did</i>, in fact, have a disproportionate number of sightings.</li>
+                  <li id="list">The median duration was 180 seconds and the mean was 5800 seconds, due to outliers.</li>
+              </ol>
+            </ul>
+
+            <ul class="centered-text">
+              <li style="font-size: 16px"><strong>Some limitations of the dataset included:</strong></li>
+              <ol>
+                  <li id="list">We had no controls for population size or density when grouping by state.</li>
+                  <li id="list">More analysis is needed to properly remove the “duration” outliers which affected the averages. 
+                    The median duration was a far more accurate metric because, as one of the graphs shows, durations tended to be either short (quick sighting) or long (abductions?).
+                    I removed the three most disruptive outliers, which lowered the average duration from 5800 seconds to 3165 seconds, just to illustrate 
+                    how much the outliers were warping the average.</li>
+                  <li id="list">The vast majority of observations in the data came from the 21st century, though that may simply be a reflection 
+                    of the origins of the recorded data rather than evidence that UFO sightings have substantially increased.</li>
+                  <li id="list">The integrity of the data was uncertain at times, with descriptions not matching time or place. This was how the data was provided and not due to error on our part.</li>
+              </ol>
+            </ul>
+
+            <h2 style="color: white; text-align: center"><strong>Example Dataframe</strong></h2>
+            <h4 style="color: white; text-align: center">The last 12 UFO sightings in Roswell, New Mexico</h4>
+            <table id="df-table">
+              <tr id="df-header">
+                  <th style="text-align: center">ID</th>
+                  <th style="text-align: center; width: 180px">Datetime</th>
+                  <th style="text-align: center">Descriptor</th>
+                  <th style="text-align: center">Duration (seconds)</th>
+                  <th style="text-align: center">City</th>
+                  <th style="text-align: center">State</th>
+              </tr>
+              <tr>
+                  <td>13556</td>
+                  <td>2012-11-08 22:30:00</td>
+                  <td>flash</td>
+                  <td>3600.0</td>
+                  <td>roswell</td>
+                  <td>nm</td>
+              </tr>
+              <tr>
+                  <td>12847</td>
+                  <td>2011-01-16 14:30:00</td>
+                  <td>egg</td>
+                  <td>3.0</td>
+                  <td>roswell</td>
+                  <td>nm</td>
+              </tr>
+              <tr>
+                  <td>58098</td>
+                  <td>2009-08-05 20:45:00</td>
+                  <td>light</td>
+                  <td>35.0</td>
+                  <td>roswell</td>
+                  <td>nm</td>
+              </tr>
+              <tr>
+                  <td>38206</td>
+                  <td>2009-06-10 21:10:00</td>
+                  <td>sphere</td>
+                  <td>30.0</td>
+                  <td>roswell</td>
+                  <td>nm</td>
+              </tr>
+              <tr>
+                  <td>60685</td>
+                  <td>2008-09-15 18:30:00</td>
+                  <td>changing</td>
+                  <td>2700.0</td>
+                  <td>roswell</td>
+                  <td>nm</td>
+              </tr>
+              <tr>
+                  <td>58880</td>
+                  <td>2008-08-09 19:03:00</td>
+                  <td>light</td>
+                  <td>180.0</td>
+                  <td>roswell</td>
+                  <td>nm</td>
+              </tr>
+              <tr>
+                  <td>57884</td>
+                  <td>2008-08-04 21:53:00</td>
+                  <td>unknown</td>
+                  <td>6.0</td>
+                  <td>roswell</td>
+                  <td>nm</td>
+              </tr>
+              <tr>
+                  <td>64334</td>
+                  <td>2007-09-05 23:55:00</td>
+                  <td>changing</td>
+                  <td>15.0</td>
+                  <td>roswell</td>
+                  <td>nm</td>
+              </tr>
+              <tr>
+                  <td>20469</td>
+                  <td>2006-01-05 18:45:00</td>
+                  <td>flash</td>
+                  <td>1.0</td>
+                  <td>roswell</td>
+                  <td>nm</td>
+              </tr>
+              <tr>
+                  <td>50160</td>
+                  <td>2005-07-04 11:00:00</td>
+                  <td>disk</td>
+                  <td>5.0</td>
+                  <td>roswell</td>
+                  <td>nm</td>
+              </tr>
+              <tr>
+                  <td>54073</td>
+                  <td>2004-08-15 00:16:00</td>
+                  <td>disk</td>
+                  <td>780.0</td>
+                  <td>roswell</td>
+                  <td>nm</td>
+              </tr>
+              <tr>
+                  <td>34540</td>
+                  <td>2004-05-13 21:00:00</td>
+                  <td>light</td>
+                  <td>300.0</td>
+                  <td>roswell</td>
+                  <td>nm</td>
+              </tr>
+            </table>
+            <div class="outliers">
+              <h2 style="color: white; text-align: center"><strong>Removing outliers</strong></h2>
+              <p class="centered-text">As mentioned above, when we looked at the disparity between the time of the occurence and the time reported against the 
+                average duration, it was clear there were 2-3 data points severely skewing the average. They were easy to locate using pandas 
+                dataframes, and I removed the three marked with the IDs "52326," "56118," and 60481." This brought the overall average down from 
+                5800 seconds to 3165 seconds. There are still outliers skewing the data, but they were by far the biggest offenders. The following figures demonstrate 
+                the before and after. Additionally, it was difficult to try to get the figures out of scientific notation given some of the long 
+                observations.
+              </p>
+              <img id="outlier-graphs" src="Images\Project3Graph7.jpg" alt="Figure 7">
+              <img id="outlier-graphs" src="Images\Project3Graph8.jpg" alt="Figure 8">
+            </div>
+            <div class="graphs">
+              <div class="graphs-header">
+                <h2 style="color: white"><strong>Graphs from the data</strong></h2>
+                <p class="centered-text" style="text-align: left">The following graphs were made using Matplotlib and pandas dataframes. It should be noted that the last two graphs still include 
+                  the aforementioned outliers which were removed from the data.
+                </p>
+              </div>
+              <img id="data-graphs" src="Images\Project3Graph1.jpg" alt="Figure 1">
+              <img id="data-graphs" src="Images\Project3Graph2.jpg" alt="Figure 2">
+              <img id="data-graphs" src="Images\Project3Graph3.jpg" alt="Figure 3">
+              <img id="data-graphs" src="Images\Project3Graph4.jpg" alt="Figure 4">
+              <img id="data-graphs" src="Images\Project3Graph5.jpg" alt="Figure 5">
+              <img id="data-graphs" src="Images\Project3Graph6.jpg" alt="Figure 6">
+            </div>
+        
+        </div>
+
+        <footer>
+          <div class="footer-content">
+              <p>&copy; 2023 Group 3 Project 3</p>
+          </div>
+        </footer>
+    
+    <!-- Our JavaScript -->
+    <script type="text/javascript" src="static\data_tab.js"></script>
+
+    </body>
+</html>

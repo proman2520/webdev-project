@@ -1,0 +1,290 @@
+/* Parallax Pixel Stars */
+/* https://codepen.io/saransh/pen/BKJun */
+html {
+    height: 100%;
+    background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
+    color: #333333
+  }
+
+body {
+    font-family: 'Fira Sans Condensed', sans-serif;
+    font-family: 'Poppins', sans-serif;
+    background-color: black
+}
+
+/* Original jumbotron color was #ba9766, #ba9766, #fae6ca */
+.jumbotron {
+  background: #116e40 linear-gradient(#1eba6c, #5dd172);
+  background-size: 100% 100%;
+  overflow: auto;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+#title {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  color: #FFF;
+  text-align: center;
+  font-family: "lato", sans-serif;
+  font-weight: 300;
+  font-size: 50px;
+  letter-spacing: 10px;
+  margin-top: -60px;
+  padding-left: 10px;
+}
+
+#title span {
+  background: -webkit-linear-gradient(white, #38495a);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+@keyframes animStar {
+  from {
+    transform: translateY(0px);
+  }
+  to {
+    transform: translateY(-2000px);
+  }
+}
+
+#map {
+  height: 600px;
+  padding: 10px;
+  margin: 40px;
+  margin-top: 10px;
+  border-radius: 5px;
+}
+
+.content-box {
+  background-color:#607283;
+  color: white;
+  border-radius: 5px;
+  padding-top: 10px;
+  padding-bottom: 40px;
+  height: 90%;
+  margin: 10px 100px;
+}
+
+.centered-text {
+  margin: 0 10%; /* Adjust the left and right margins as needed */
+}
+
+.container {
+  color: black;
+}
+
+.col-md-5 {
+  border-radius: 5px;
+  height: auto; /* Adjust as needed */
+  overflow: auto;
+}
+
+.leaflet-title {
+  color: white;
+  text-align: center;
+  padding: 10px;
+}
+
+.nav {
+  margin: 10px;
+}
+
+.footer-content {
+  color: white;
+  margin: 10px;
+}
+
+.api-table {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+tbody, td {
+  border: 2px solid #fffefe;
+  padding: 5px;
+}
+
+thead {
+  border: 2px solid #fffefe;
+  padding: 5px;
+  background-color: rgb(12, 133, 12);
+}
+
+#descriptionButton {
+  color: black;
+  font-size: 16px;
+  margin-left: 50px;
+}
+
+.graphs {
+  text-align: center;
+}
+
+.graphs-header {
+  margin: 0px 40px;
+}
+
+.outliers {
+  margin: 40px;
+}
+
+#data-graphs {
+  height: 600px;
+  width: 600px;
+  margin: 20px;
+}
+
+#outlier-graphs {
+  height: 500px;
+  width: 500px;
+  margin: 20px;
+  margin-left: 60px;
+}
+
+#sighting-comments {
+  text-align: center;
+  font-size: 20px;
+  margin: 20px;
+}
+
+#sighting-details {
+  margin: 40px;
+  margin-top: 20px;
+}
+
+.generated-sighting {
+  background-color: rgb(66, 66, 66);
+  margin: 10px;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+#downloadLink {
+  text-decoration: none;
+  background-color: #046d20;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 5px;
+}
+
+.download-box {
+  margin: 20px 100px;
+  margin-top: 0px;
+  padding: 10px;
+}
+
+.logo1 {
+  position: relative;
+  border-radius: 50%; /* This makes the container circular */
+  z-index: 1; /* Set a higher z-index value for the image container */
+}
+
+#logo1 {
+  position: absolute;
+  margin: 20px;
+  top: 0;
+  left: 0;
+  height: 140px;
+  width: 140px;
+  object-fit: cover;
+  border-radius: 50%; /* This makes the container circular */
+}
+
+.logo2 {
+  position: relative;
+  border-radius: 50%; /* This makes the container circular */
+  z-index: 1; /* Set a higher z-index value for the image container */
+}
+
+#logo2 {
+  position: absolute;
+  margin: 20px;
+  top: 0;
+  right: 0;
+  height: 140px;
+  width: 140px;
+  object-fit: cover;
+  border-radius: 50%; /* This makes the container circular */
+}
+
+#list {
+  margin: 2px;
+}
+
+#df-table {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+
+#df-table tr, #df-table td {
+  width: 150px;
+}
+
+.video-evidence {
+  color: white;
+  text-align: center;
+}
+
+.contact-ref {
+  text-align: center;
+}
+
+.submission-form {
+  text-align: center;
+  border: 2px solid white;
+  margin: 10px 300px;
+}
+
+#form {
+  width: 80%; /* Adjust the width as needed */
+  margin: 0 auto; /* Horizontally center the container */
+  padding: 20px; /* Add padding to control spacing inside the container */
+  color: white;
+  text-align: left;
+}
+
+#area51-images {
+  width: 600px;
+  margin: 20px;
+  border: 2px solid black;
+  display: inline-block; /* Display images side by side */
+  text-align: center;
+}
+
+/* .link1 {
+  color: palegreen;
+  font-size: 30px;
+  display: block;
+  text-align: center;
+}  */
+
+.button-container {
+  display: block; /* or "block" if you want it to span the full width */
+  background-color: seagreen; /* Background color for the button */
+  padding: 10px 20px; /* Adjust padding as needed */
+  border-radius: 10px; /* Rounded corners for the button */
+  text-align: center; /* Center-align text within the container */
+  margin: 0 400px;
+}
+
+.button-container a {
+  text-decoration: none; /* Remove default underline on links */
+  color: #fff; /* Text color for the button */
+  display: block; /* Make the link a block-level element for full button width */
+  font-weight: bold; /* Optionally make the text bold */
+}
+
+.button-container:hover {
+  background-color: #0056b3; /* Change background color on hover */
+  transform: scale(1.05); /* Scale the button on hover (makes it "pop") */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Add a subtle box shadow on hover */
+}

@@ -1,0 +1,14 @@
+GOALS:
+[complete]
+
+Pages:
+- Home (index.html)
+    - Interactive map of UFO sightings (using Leaflet)
+- Analysis
+    - Data visualizations (charts, graphs, using Plotly)
+- Data
+    - Dataframe heads, which will have to be translated from Pandas DF to HTML Table
+- API
+    - will need workable routes that mean you put in an ID number and it spits out the JSONified entry
+
+- ADD TO GITHUB PAGES?

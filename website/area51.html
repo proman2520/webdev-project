@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <script src="https://d3js.org/d3.v7.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <!--Links and imports-->
+        <link
+            rel="stylesheet"
+            href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+            integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+            crossorigin="anonymous"
+        />
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Fira+Sans+Condensed&family=Poppins:wght@300&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="static/style.css" />
+        
+        <title>AREA 51</title>
+
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+        crossorigin="" />
+
+        <!-- Leaflet JS -->
+        <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+        crossorigin=""></script>
+
+        <!-- Marker cluster JavaScript code -->
+        <script type="text/javascript" src="https://unpkg.com/leaflet.markercluster@1.0.3/dist/leaflet.markercluster.js"></script>
+
+        <!-- Marker cluster CSS -->
+        <link rel="stylesheet" type="text/css" href="https://unpkg.com/leaflet.markercluster@1.0.3/dist/MarkerCluster.css">
+        <link rel="stylesheet" type="text/css" href="https://unpkg.com/leaflet.markercluster@1.0.3/dist/MarkerCluster.Default.css">
+
+    </head>
+
+    <!--Change the class IDs!-->
+
+    <body>
+        <div class="logo1">
+            <img src="Images/UFO1.jpg" alt="UFO logo" id="logo1">
+        </div>
+        <div class="logo2">
+            <img src="Images/UFO1.jpg" alt="UFO logo" id="logo2">
+        </div>
+        <div class="container">
+          <div class="jumbotron" style="text-align:center">
+            <h2>UFO Sightings in the U.S.</h2>
+            <h4>By Andrew Prozorovsky, Manali Patel, Kush Garg, Sarah John</h4>
+            <h4>We looked at over 65,000 reported UFO sightings between the years of 1910-2014.<span class="star-wars"></span></h4>
+
+            <div class="nav">
+              <div class="col">
+                  <a type="button" href="index.html" class="btn btn-default btn-lg upvote" value=1>
+                    <span class=""></span> Map
+                  </a>
+                  <a type="button" href="analysis.html" class="btn btn-default btn-lg downvote" value=-1>
+                    <span class=""></span> Analysis
+                  </a>
+                  <a type="button" href="data_tab.html" class="btn btn-default btn-lg upvote" value=1>
+                    <span class=""></span> Data
+                  </a>
+                  <a type="button" href="api_home.html" class="btn btn-default btn-lg downvote" value=-1>
+                    <span class=""></span> API
+                  </a>
+                  <a type="button" href="area51.html" class="btn btn-default btn-lg downvote" value=-1>
+                    <span class=""></span> Area 51
+                  </a>
+                  <a type="button" href="contact.html" class="btn btn-default btn-lg downvote" value=-1>
+                    <span class=""></span> Contact
+                  </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <br/>
+        <div class="content-box">
+                <h2 style="text-align: center"><strong>Area 51</strong></h2>
+                <h4 style="text-align: center">They can't stop us all.</h4>
+                <h3 style="text-align: center">37.2431° N, 115.7930° W</h3>
+                <p class="centered-text">When the data was filtered to sightings within ~0.5 degrees of Area 51's
+                    latitude and longitude (about 35 miles), there were <strong>22</strong> results, most of which came from Rachel, Nevada, 
+                    the closest town to Area 51. If that radius is expanded to a full degree of latitude and longitude, 
+                    there are <strong>hundreds</strong> of reported sightings.
+                </p>
+                <br/>
+                <div class="button-container">
+                    <a class="link1" href="https://www.britannica.com/video/212132/Area-51-military-air-force-base-alien-video">LEARN THE TRUTH NOW.</a>
+                </div>
+                <br/>
+                <div class="button-container">
+                  <a class="link1" href="https://www.vox.com/2019/9/19/20857221/storm-area-51-aliens-ufos-meme-myth-lore-history-bob-lazar-explained">MORE TRUTH.</a>
+                </div>
+                <br/>
+                <div class="button-container">
+                  <a class="link1" href="https://www.bbc.com/news/world-us-canada-49568127">SO MUCH TRUTH.</a>
+                </div>
+                <br/>
+                <img style="margin-left: 40px" id="area51-images" src="Images/rachel__nv1.jpg" alt="Rachel, Nevada sign 1">
+                <img id="area51-images" src="Images/rachel__nv2.jpg" alt="Rachel, Nevada sign 2">
+        </div>
+        <footer>
+            <div class="footer-content">
+                <p>&copy; 2023 Group 3 Project 3</p>
+            </div>
+        </footer>
+    
+    <!-- Our JavaScript -->
+    <script type="text/javascript" src="static\area51.js"></script>
+
+    </body>
+</html>
